@@ -2,9 +2,9 @@
 
 目的：学习和巩固知识。
 
-前端：Jquery   Bootstrap 
+前端：Html Jquery  Bootstrap 
 
-后端：Spring Boot mybatis mysql
+后端：SpringBoot mybatis mysql
 
 ## 进度
 
