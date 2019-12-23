@@ -42,6 +42,7 @@ public class LoginController {
         return false;
     }
 
+    /*用户注销*/
     @ResponseBody
     @PostMapping(value = "/quit")
     public String quit(HttpServletRequest request){

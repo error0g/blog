@@ -1980,7 +1980,7 @@ function Code(editor) {
     this.editor = editor;
     this.$elem = $('<div class="w-e-menu">\n            <i class="w-e-icon-terminal"></i>\n        </div>');
     this.type = 'panel';
-
+    this.codetype = editor.customConfig.codeType != null ? editor.customConfig.codeType.type : null;
     // 当前是否 active 状态
     this._active = false;
 }
@@ -2029,6 +2029,15 @@ Code.prototype = {
         var type = !value ? 'new' : 'edit';
         var textId = getRandom('texxt');
         var btnId = getRandom('btn');
+        var select = "";
+        if (editor.customConfig.codeType != null) {
+            var title = editor.customConfig.codeType.title == null ? "请选择代码类型:" : editor.customConfig.codeType.title;
+            var select = "<div class='codeType'><span>" + title + "</span><select>";
+            for (var i = 0; i < _this.codetype.length; i++) {
+                select = select + "<option value='" + _this.codetype[i] + "'>" + _this.codetype[i] + "</option>";
+            }
+            select = select + "</select></div>";
+        }
 
         var panel = new Panel(this, {
             width: 500,
@@ -2037,7 +2046,10 @@ Code.prototype = {
                 // 标题
                 title: '插入代码',
                 // 模板
-                tpl: '<div>\n                        <textarea id="' + textId + '" style="height:145px;;">' + value + '</textarea>\n                        <div class="w-e-button-container">\n                            <button id="' + btnId + '" class="right">\u63D2\u5165</button>\n                        </div>\n                    <div>',
+                tpl: '<div>\n' + select + '<textarea id="' + textId + '" style="height:145px;;">' + value +
+                    '</textarea>\n                        <div class="w-e-button-container">\n                            <button id="' +
+                    btnId +
+                    '" class="right">\u63D2\u5165</button>\n                        </div>\n                    <div>',
                 // 事件绑定
                 events: [
                 // 插入代码
@@ -2050,7 +2062,7 @@ Code.prototype = {
                         text = replaceHtmlSymbol(text);
                         if (type === 'new') {
                             // 新插入
-                            _this._insertCode(text);
+                            _this._insertCode('\n'+text);
                         } else {
                             // 编辑更新
                             _this._updateCode(text);
@@ -2073,8 +2085,10 @@ Code.prototype = {
 
     // 插入代码
     _insertCode: function _insertCode(value) {
+        var _this = this;
         var editor = this.editor;
-        editor.cmd.do('insertHTML', '<pre><code>' + value + '</code></pre><p><br></p>');
+        var val = _this.codetype != null ? $('.codeType select').val() : "";
+        editor.cmd.do('insertHTML', '<pre><code class="' + val + '">' + value + '</code></pre><p><br></p>');
     },
 
     // 更新代码
@@ -2096,6 +2110,7 @@ Code.prototype = {
         if (!$selectionELem) {
             return;
         }
+
         var $parentElem = $selectionELem.parent();
         if ($selectionELem.getNodeName() === 'CODE' && $parentElem.getNodeName() === 'PRE') {
             this._active = true;

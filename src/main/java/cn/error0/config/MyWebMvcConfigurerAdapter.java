@@ -16,12 +16,16 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**/*").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/static/");
+        /*虚拟路径映射*/
+        registry.addResourceHandler("/picture/**").addResourceLocations("file:D:\\picture\\");
 
     }
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor).addPathPatterns("/admin/**");
-    }
+
+
+    //    @Override
+    //    public void addInterceptors(InterceptorRegistry registry) {
+    //        registry.addInterceptor(loginInterceptor).addPathPatterns("/admin/**");
+    //   }
 
 
 }

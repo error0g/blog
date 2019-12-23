@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.error0.dao.ArticleContentDao">
+
+    <resultMap id="ArticleContentMap" type="ArticleContent">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="artcleId" column="article_id"/>
+        <result property="createDate" column="create_by"/>
+        <result property="modifiedDate" column="modified_by"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="ArticleContent" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into tbl_article_content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="content!=null">
+                content,
+            </if>
+            <if test="artcleId!=null">
+                article_id,
+            </if>
+            <if test="createDate!=null">
+                create_by,
+            </if>
+            <if test="modifiedDate!=null">
+                modified_by,
+            </if>
+        </trim>
+        VALUE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="content!=null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="artcleId!=null">
+                #{artcleId,jdbcType=BIGINT},
+            </if>
+            <if test="createDate!=null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifiedDate!=null">
+                #{modifiedDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectOne" parameterType="Long" resultMap="ArticleContentMap">
+            select * from tbl_article_content WHERE article_id=#{id}
+    </select>
+</mapper>

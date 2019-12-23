@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.error0.dao.ArticleSortDao">
+    <resultMap id="ArticleSortMap" type="ArticleSort">
+        <id property="id" column="id"/>
+        <result property="sortId" column="sort_id"/>
+        <result property="artcleId" column="article_id"/>
+        <result property="effective" column="is_effective"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="ArticleSort" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into tbl_article_sort
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sortId!=null">
+                sort_id,
+            </if>
+            <if test="artcleId!=null">
+                article_id,
+            </if>
+            <if test="effective!=null">
+                is_effective,
+            </if>
+        </trim>
+        VALUE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sortId!=null">
+                #{sortId,jdbcType=BIGINT},
+            </if>
+            <if test="artcleId!=null">
+                #{artcleId,jdbcType=BIGINT},
+            </if>
+            <if test="effective!=null">
+                #{effective,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectOne" parameterType="Long" resultMap="ArticleSortMap">
+            select * from  tbl_article_sort WHERE article_id = #{id}
+    </select>
+</mapper>

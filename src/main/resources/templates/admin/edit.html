@@ -9,7 +9,6 @@
     <script type="text/javascript" src="../../static/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-      <script src="../js/admin/public.js"></script>
     <link rel="stylesheet" type="text/css" href="../../static/bootstrap/dist/css/bootstrap.min.css">
       <style type="text/css">
         .navbar-brand{
@@ -28,6 +27,10 @@
         .main{
           padding-top: 100px;
         }
+        #saveArticle{
+            margin-top: 50px;
+          }
+
       </style>
   </head>
 <body>
@@ -47,7 +50,7 @@
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">文章管理</a></li>
+            <li><a href="/admin/article">文章管理</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">分类管理</a></li>
           </ul>
@@ -64,21 +67,48 @@
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
     <div class="row main">
     <div id="title-pape" style="margin-bottom: 10px;">
-       <input type="text" class="form-control  " id="title" placeholder="标题">
+       <input  class="form-control  " id="title" placeholder="标题">
     </div>
     <div id="editor">
-        <p>别再懒了 写点东西吧！！！</p>
+
     </div>
-    <script type="text/javascript" src="../../static/wangEditor/release/wangEditor.min.js"></script>
-    <script type="text/javascript">
-        var E = window.wangEditor
-        var editor = new E('#editor')
-        editor.customConfig.uploadImgServer = '/upload'
-        editor.create()
-    </script>
+        <label> 分类</label>
+                <select  id="sort" class="form-control">
+                    <option kindId="124">Java</option>
+                    <option kindId="123">C++</option>
+                </select>
+
+                <label> 置顶：</label>
+                <select id="top" class="form-control">
+                    <option value="false">否</option>
+                    <option value="true">是</option>
+                </select>
+
+        <div class="col-md-offset-11">
+            <button id="saveArticle" type="button" class="btn btn-default">发布文章</button>
+        </div>
+
   </div>
 </div>
 </div>
 
+
+<!--js引入-->
+<script type="text/javascript" src="../../static/wangEditor/release/wangEditor.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    editor.customConfig.uploadImgServer = './upload'
+    editor.customConfig.uploadFileName = 'pic'
+    editor.customConfig.codeType={
+        title:"选择代码类型:",
+        type:[
+            "c++","php","c#","java"
+        ]
+    };
+    editor.create()
+</script>
+<script src="../js/admin/public.js"></script>
+<script src="../js/admin/edit.js"></script>
 </body>
 </html>

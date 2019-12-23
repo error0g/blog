@@ -1,5 +1,3 @@
-
-
 $(function(){
 /*注销用户*/
 $("#quit").click(function () {
@@ -26,6 +24,6 @@ $("#quit").click(function () {
         })
         .catch(function (err) {
             console.error(err);
-        })
-
+        });
 });
+
