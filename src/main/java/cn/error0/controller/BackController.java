@@ -67,28 +67,27 @@ public class BackController {
 
     /*
     *  功能：图片上传
-    *  注释：以下返回结果是根据wangeditor编辑器要求。
     *  文件路径在Webconfig已经映射。
     * */
-    @RequestMapping(value="/upload",method = RequestMethod.POST)
+    @RequestMapping(value="/uploadfile",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> upload(@RequestParam(value = "pic") MultipartFile pic)
+    public Map<String, Object> upload(@RequestParam(value = "editormd-image-file", required = false)MultipartFile editor )
     {
         Map<String, Object> result= new HashMap<>();
-        ArrayList<String> URL=new ArrayList<>();
-        if(pic.isEmpty())
-            return null;
-        String fileName=pic.getOriginalFilename();
-        String suffixName=fileName.substring(fileName.lastIndexOf("."));
-        String filepath="D:\\picture\\";
-        fileName= UUID.randomUUID()+suffixName;
-        URL.add("http://localhost:8080/picture/"+fileName);
-        result.put("errno",0);
-        result.put("data",URL);
-        File dest=new File(filepath+fileName);
+
         try {
-            pic.transferTo(dest);
+            String fileName=editor .getOriginalFilename();
+            String suffixName=fileName.substring(fileName.lastIndexOf("."));
+            String filepath="D:\\picture\\";
+            fileName= UUID.randomUUID()+suffixName;
+            result.put("success",1);
+            result.put("message","上传成功");
+            result.put("url","/picture/"+fileName);
+            File dest=new File(filepath+fileName);
+            editor.transferTo(dest);
         } catch (IOException e) {
+            result.put("success","0");
+            result.put("message","上传失败");
             e.printStackTrace();
         }
         return result;

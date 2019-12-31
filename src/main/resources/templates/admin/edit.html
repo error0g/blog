@@ -1,112 +1,115 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
+<head>
     <title>Admin Center Page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="../../static/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../static/bootstrap/dist/css/bootstrap.min.css">
-      <style type="text/css">
-        .navbar-brand{
-          padding-top:9px;
+    <link rel="stylesheet" href="../../editor/css/editormd.css"/>
+    <script src="../../editor/editormd.min.js"></script>
+    <style type="text/css">
+        .navbar-brand {
+            padding-top: 9px;
         }
-        .out-user{
-          padding-top:9px;
-           padding-right:20px;
-        }
-        #text-network{
-        white-space:nowrap; 
-        width:17em; 
-        overflow:hidden; 
-        text-overflow:ellipsis;
-        }
-        .main{
-          padding-top: 100px;
-        }
-        #saveArticle{
-            margin-top: 50px;
-          }
 
-      </style>
-  </head>
+        .out-user {
+            padding-top: 9px;
+            padding-right: 20px;
+        }
+
+        #text-network {
+            white-space: nowrap;
+            width: 17em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .main {
+            height: 900px;
+            padding-top: 100px;
+        }
+
+        #saveArticle {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
 <body>
 <!-- 导航条 start -->
 <nav class="navbar navbar-default  navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="../../static/img/github.png">
-      </a>
-    </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-       <p class="navbar-text " id="text-network">这里是放骚话的 虽然骚话多但是可省略</p>
-      <ul class="nav navbar-nav">
-         <li ><a href="/admin/index">后台中心 <span class="sr-only">(current)</span></a></li>
-            <li class="active"><a href="#">撰写 </a></li>
-         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/admin/article">文章管理</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">分类管理</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="navbar-right out-user">
-         <button type="button" class="navbar-right btn btn-default ">登出</button>
-      </div>
-    </div>
-  </div>
-</nav>
- 
-<div class="container-fluid">
-<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-    <div class="row main">
-    <div id="title-pape" style="margin-bottom: 10px;">
-       <input  class="form-control  " id="title" placeholder="标题">
-    </div>
-    <div id="editor">
-
-    </div>
-        <label> 分类</label>
-                <select  id="sort" class="form-control">
-                    <option kindId="124">Java</option>
-                    <option kindId="123">C++</option>
-                </select>
-
-                <label> 置顶：</label>
-                <select id="top" class="form-control">
-                    <option value="false">否</option>
-                    <option value="true">是</option>
-                </select>
-
-        <div class="col-md-offset-11">
-            <button id="saveArticle" type="button" class="btn btn-default">发布文章</button>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="../../static/img/github.png">
+            </a>
         </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <p class="navbar-text " id="text-network">这里是放骚话的 虽然骚话多但是可省略</p>
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/index">后台中心 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">撰写 </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/admin/article">文章管理</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">分类管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-right out-user">
+                <button type="button" class="navbar-right btn btn-default ">登出</button>
+            </div>
+        </div>
+    </div>
+</nav>
 
-  </div>
-</div>
-</div>
+<div class="container-fluid">
+    <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
+        <div class="row main">
+            <div id="title-pape" style="margin-bottom: 10px;">
+                <input class="form-control  " id="title" placeholder="标题">
+            </div>
+            <div id="editor">
+                <textarea style="display:none;"></textarea>
+            </div>
+            <label> 分类</label>
+            <select id="sort" class="form-control">
+                <option kindId="124">Java</option>
+                <option kindId="123">C++</option>
+            </select>
 
+            <label> 置顶：</label>
+            <select id="top" class="form-control">
+                <option value="false">否</option>
+                <option value="true">是</option>
+            </select>
+
+            <div class="col-md-offset-11">
+                <button id="saveArticle" type="button" class="btn btn-default">发布文章</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!--js引入-->
-<script type="text/javascript" src="../../static/wangEditor/release/wangEditor.js"></script>
 <script type="text/javascript">
-    var E = window.wangEditor
-    var editor = new E('#editor')
-    editor.customConfig.uploadImgServer = './upload'
-    editor.customConfig.uploadFileName = 'pic'
-    editor.customConfig.codeType={
-        title:"选择代码类型:",
-        type:[
-            "c++","php","c#","java"
-        ]
-    };
-    editor.create()
+    var editor = editormd("editor", {
+        height: 470,
+        path: "../../editor/lib/",
+        imageUpload: true,
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL: "uploadfile",
+        saveHTMLToTextarea: true,
+    });
 </script>
 <script src="../js/admin/public.js"></script>
 <script src="../js/admin/edit.js"></script>

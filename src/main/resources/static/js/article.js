@@ -14,9 +14,8 @@ window.onload = function () {
         return (false);
     }
 
-    var articleId = getQueryVariable("articleId");
-
     // 获取文章信息
+    var articleId = getQueryVariable("articleId");
     $.ajax({
         type: "get",
         url: "/article/" + articleId,
@@ -24,8 +23,18 @@ window.onload = function () {
         success: function (json) {
             $("#articleTitle").html(json.title);
             $("#articleCreateBy").html(json.createDate);
-            $("#articleContent").html(json.content);
-            $("#articleKind").html(json.kindName);
+            $("#articleContent").text(json.content);
+            MarkDown();
         }
     });
+    function MarkDown() {   
+        editormd.markdownToHTML("article-body", {
+            htmlDecode: "style,script,iframe",
+            emoji: true,
+            taskList: true,
+            tex: true,
+            flowChart: true,
+            sequenceDiagram: true
+        });
+    }
 }

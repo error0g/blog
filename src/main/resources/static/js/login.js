@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     $(".login").click(function () {
         var username = $("#username").val();
         var password = $("#password").val();
@@ -7,11 +7,9 @@ $(function() {
             url: "/login",
             data: {"username": username, "password": password},
             success: function (result) {
-                if(result==true)
-                {
-                    window.location='./admin/index';
-                }
-                else {
+                if (result == true) {
+                    window.location = './admin/index';
+                } else {
                     $('#myModal').modal('show')
                 }
                 console.log(result);

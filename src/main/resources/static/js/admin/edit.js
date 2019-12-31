@@ -2,7 +2,7 @@ $(function(){
     /*新文章发布*/
     $("#saveArticle").click(function () {
         var title=$("#title").val();
-        var content =editor.txt.html();
+         var content =editor.getMarkdown();
         var kindId=$("#sort option:selected").attr("kindId");
         var top=$("#top").val();
         var article={
