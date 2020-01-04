@@ -14,4 +14,9 @@ public class UserServiceImpl implements UserService {
     public User getByName(String name) {
         return userDao.selectByName(name);
     }
+
+    @Override
+    public void updatePsw(User user) {
+        userDao.updateUser(user);
+    }
 }

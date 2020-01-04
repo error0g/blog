@@ -45,4 +45,8 @@
     <select id="selectOne" parameterType="Long" resultMap="ArticleContentMap">
             select * from tbl_article_content WHERE article_id=#{id}
     </select>
+
+    <select id="selectAll"  resultMap="ArticleContentMap">
+           SELECT * from tbl_article_content ORDER BY create_by DESC
+    </select>
 </mapper>

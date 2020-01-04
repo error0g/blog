@@ -30,4 +30,7 @@
     <select id="selectOne" parameterType="Long" resultType="ArticleInfo">
             select * from tbl_article_info WHERE id=#{id}
     </select>
+    <update id="updateArticleInfo" parameterType="ArticleInfo">
+        update tbl_article_info set title=#{title},traffic=#{traffic},is_top=#{top} where id=#{id};
+    </update>
 </mapper>

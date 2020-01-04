@@ -5,14 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="editor/examples/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-    <script src="../js/admin/index.js"></script>
-    <script src="../js/admin/public.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../static/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
 
     <style type="text/css">
         .navbar-brand {
@@ -92,7 +90,7 @@
                         <img src="../../static/img/picture.jpg" alt="谁还不是只小猫呢"
                              class="img-circle img-responsive center-block">
                         <div class="center-block text-center info-tbl">
-                            <p>用户名：admin</p>
+                            <div>用户名：<span id="user">admin</span></div>
                             <p>最近登录：11月29日15:53:44</p>
                             <button type="button" class="btn btn-default btn-info">设置资料</button>
                             <button type="button" class="btn btn-default btn-success btn-setpassword">修改密码</button>
@@ -102,7 +100,7 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="password" placeholder="输入要修改的密码">
                                 </div>
-                                <button type="button" class="btn btn-default btn-sm btn-warning">修改</button>
+                                <button type="button" id="setPsw" class="btn btn-default btn-sm btn-warning">修改</button>
                             </form>
                         </div>
                     </div>
@@ -163,5 +161,9 @@
     </div>
 </div>
 <!-- 内容中心 end -->
+
+<!--js引入-->
+<script src="./js/admin/index.js"></script>
+<script src="./js/admin/public.js"></script>
 </body>
 </html>

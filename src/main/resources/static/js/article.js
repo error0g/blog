@@ -1,6 +1,6 @@
+/*获取文章*/
+
 window.onload = function () {
-
-
 //获取url的参数
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -14,7 +14,7 @@ window.onload = function () {
         return (false);
     }
 
-    // 获取文章信息
+    /*获取文章信息*/
     var articleId = getQueryVariable("articleId");
     $.ajax({
         type: "get",
@@ -24,9 +24,12 @@ window.onload = function () {
             $("#articleTitle").html(json.title);
             $("#articleCreateBy").html(json.createDate);
             $("#articleContent").text(json.content);
+            $("#articleKind").html(json.kindName)
+            $("#articlTraffic").html(json.traffic);
             MarkDown();
         }
     });
+    /*markdown 渲染插件*/
     function MarkDown() {   
         editormd.markdownToHTML("article-body", {
             htmlDecode: "style,script,iframe",

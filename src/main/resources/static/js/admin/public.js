@@ -1,3 +1,5 @@
+/*后台公有方法*/
+
 $(function(){
 /*注销用户*/
 $("#quit").click(function () {

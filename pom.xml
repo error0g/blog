@@ -100,6 +100,13 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
         </dependency>
+    <!-- 导入Spring单元测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -112,26 +119,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>static/**/*.woff</exclude>
-                    <exclude>static/**/*.woff2</exclude>
-                    <exclude>static/**/*.ttf</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>static/**/*.woff</include>
-                    <include>static/**/*.woff2</include>
-                    <include>static/**/*.ttf</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
 </project>

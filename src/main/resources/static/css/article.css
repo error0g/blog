@@ -1,0 +1,50 @@
+.paper {
+    margin-top: 6%;
+    width: auto !important;
+    border-style: solid #969696;
+    border-width: 1px;
+    height: auto !important;
+    min-height: 700px;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-shadow: #888888 0px 0px 15px;
+    -moz-box-shadow: #888888 0px 0px 15px;
+    box-shadow: #888888 0px 0px 25px;
+}
+
+.head {
+    padding-top: 80px;
+}
+
+#relative-info {
+    margin-top: 50px;
+}
+
+#relative-info ul {
+    margin: 0 auto;
+    width: 300px;
+    display: flex;
+    list-style: none;
+    font-size: 14px;
+    color: #5c6875;
+}
+
+#relative-info ul li {
+    padding-right: 20px;
+}
+
+#relative-info i {
+    padding-right: 5px;
+}
+
+.container {
+    min-height: 900px;
+}
+
+body {
+    background-color: #E8E8E8;
+}
+
+#article-body {
+    margin: 0 auto;
+    width: 80%;
+}

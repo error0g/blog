@@ -13,7 +13,7 @@ public class Article {
     private String title;         // 文章标题
     private String content;       // 文章内容
     private boolean top;          // 是否置顶
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;      // 创建时间
     private Date modifiedDate;    // 修改时间
     private int traffic;          //文章点击数量

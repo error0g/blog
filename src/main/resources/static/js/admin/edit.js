@@ -1,3 +1,5 @@
+/*文章编辑*/
+
 $(function(){
     /*新文章发布*/
     $("#saveArticle").click(function () {

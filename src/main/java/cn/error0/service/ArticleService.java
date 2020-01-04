@@ -2,10 +2,13 @@ package cn.error0.service;
 
 import cn.error0.entity.Article;
 
-/**
- *  文章service
- */
+import java.util.List;
+
+
 public interface ArticleService {
-    void addArticle(Article Article);
+    void addArticle(Article article);
+
     Article getOneArticle(Long id);
+
+    List<Article> getAllArticle();
 }

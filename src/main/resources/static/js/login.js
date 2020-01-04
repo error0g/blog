@@ -1,3 +1,5 @@
+
+/*后台登陆请求*/
 $(function () {
     $(".login").click(function () {
         var username = $("#username").val();
@@ -8,7 +10,7 @@ $(function () {
             data: {"username": username, "password": password},
             success: function (result) {
                 if (result == true) {
-                    window.location = './admin/index';
+                    window.location = './admin';
                 } else {
                     $('#myModal').modal('show')
                 }
