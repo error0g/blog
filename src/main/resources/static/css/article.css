@@ -45,6 +45,7 @@ body {
 }
 
 #article-body {
-    margin: 0 auto;
+    margin: 0 auto 6%;
+
     width: 80%;
 }

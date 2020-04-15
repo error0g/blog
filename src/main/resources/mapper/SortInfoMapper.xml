@@ -8,7 +8,6 @@
             <result property="number" column="number"/>
             <result property="createDate" column="create_by"/>
             <result property="modifiedDate" column="modified_by"/>
-            <result property="effective" column="is_effective"/>
         </resultMap>
 
 
@@ -27,9 +26,7 @@
             <if test="modifiedDate!=null">
                 modified_by,
             </if>
-            <if test="effective!=null">
-                is_effective,
-            </if>
+
         </trim>
         VALUE
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -45,12 +42,31 @@
             <if test="modifiedDate!=null">
                 #{modified_by,jdbcType=TIMESTAMP},
             </if>
-            <if test="effective!=null">
-                #{is_effective,jdbcType=BIT},
-            </if>
+
         </trim>
     </insert>
     <select id="selectOne" parameterType="Long" resultMap="SortInfoMap">
             select * from  tbl_sort_info WHERE id = #{id}
     </select>
+
+    <update id="updateSortInfo" parameterType="SortInfo">
+        update tbl_sort_info set name=#{name},number=#{number} where id=#{id}
+    </update>
+
+    <select id="selectSortNum" resultType="Integer">
+        select COUNT(*) FROM tbl_sort_info
+    </select>
+
+    <select id="selectArticleNum" resultType="Integer">
+           select SUM(number) FROM tbl_sort_info
+    </select>
+    
+    <select id="selectAllSortInfo" resultMap="SortInfoMap">
+        select * from tbl_sort_info
+    </select>
+
+    <delete id="delete" parameterType="Long">
+        delete from tbl_sort_info where id=#{id}
+    </delete>
+
 </mapper>

@@ -2,6 +2,7 @@ body {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     background-color: #eaeaea;
+    font-family: "Helvetica Neue",Arial,sans-serif
 }
 
 html {
@@ -13,7 +14,7 @@ html {
 
 #top {
     text-align: center;
-    background-image: url('/img/background-image.jpg');
+    background-image: url('http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/181/5/thumb.jpg');
     height: 600px;
     width: 100%;
     background-size: cover;
@@ -71,41 +72,38 @@ html {
 
 
 .post-card {
-    height: 270px;
-    margin-top: 50px;
-    text-align: center;
-    border-radius: 15px 15px 15px 15px;
-    padding-top: 100px;
+    height: 290px;
+    margin-top:10px;
+    padding-top: 10px;
+    border-bottom: 1px solid #C0C0C0;
 }
-
-.post-card h3 {
-    color: #fff;
+.post-time{
+    font-size:20px;
+    color: #00b3ee;
 }
 
 .post-card a {
     text-decoration: none;
 }
 
-#post-card0 {
-    background: linear-gradient(to right,
-    #49ffee 0%, #ff291f 100%);
+.post-title{
+    font-size: 40px;
+    color: #000000;
 }
-
-#post-card1 {
-    background: linear-gradient(to right,
-    #86ff3f 0%, #ff2cf3 100%);
+.post-content{
+    width:60em;
+    height:7em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-#post-card2 {
-    background: linear-gradient(to right,
-    #fff71f 0%, #0b0cff 100%);
-}
-
 .col {
     margin: 100px auto;
     width: 75%;
 }
-
+.aboutme {
+    margin: 100px auto;
+    width: 75%;
+}
 @media only screen and (max-width: 601px) {
     .container {
         padding: 0 0 0 0;
@@ -120,12 +118,36 @@ html {
         top: 250px;
     }
 }
-
+/*小屏幕下(手机类)的样式*/
+@media only screen and (min-width: 300px) and (max-width: 509px) {
+    .container {
+        margin:0px 0px 0px 0px;
+    }
+    #card{
+        border-radius: 0px 0px 0px 0px;
+    }
+    .row{
+        margin:0px 0px 0px 0px;
+    }
+    .post-content{
+        width:20em;
+        height:7em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
 /*中等屏幕下(平板类)的样式*/
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 510px) and (max-width: 992px) {
     .container {
         width: 90%;
     }
+    .post-content{
+        width:30em;
+        height:7em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
 }
 
 /*大屏幕下(桌面类)的样式*/
@@ -134,5 +156,10 @@ html {
         width: 85%;
         max-width: 1125px;
     }
-
+    .post-content{
+        width:50em;
+        height:10em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

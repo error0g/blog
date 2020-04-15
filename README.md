@@ -1,11 +1,35 @@
 # Error0 Blog
 
-目的：学习和巩固知识。
 
-前端：Html Jquery  Bootstrap 
 
-后端：SpringBoot mybatis mysql
+## 简介
 
-## 进度
+主要技术： SpringBoot 、Mybatis、 Bootstrap。
 
- 边学边做。@
+![](Resources/前台.png)
+
+
+
+
+
+![](Resources/后台.png)
+
+## 页面展示
+
+
+
+### PC
+
+![](Resources/首页.png)
+
+![](Resources/页面.png)
+
+![](Resources/登录.png)
+
+![](Resources/后台首页.png)
+
+
+
+### phone
+
+![](Resources/手机首页.png)

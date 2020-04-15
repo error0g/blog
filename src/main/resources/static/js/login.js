@@ -9,10 +9,14 @@ $(function () {
             url: "/login",
             data: {"username": username, "password": password},
             success: function (result) {
-                if (result == true) {
-                    window.location = './admin';
+                if (result.code==200) {
+                    window.location = '/admin/index.html';
                 } else {
-                    $('#myModal').modal('show')
+                    swal(
+                         '密码错误！',
+                        '请检查账号或密码是否有错误!',
+                        'error'
+                    )
                 }
                 console.log(result);
             },

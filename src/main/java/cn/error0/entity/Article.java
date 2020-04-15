@@ -20,4 +20,5 @@ public class Article {
     private Long kindId;          //分类Id
     private String kindName;      //分类名称
     private String kindNumber;    //文章对应分类数量
+
 }

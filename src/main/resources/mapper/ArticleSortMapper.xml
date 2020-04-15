@@ -5,7 +5,6 @@
         <id property="id" column="id"/>
         <result property="sortId" column="sort_id"/>
         <result property="artcleId" column="article_id"/>
-        <result property="effective" column="is_effective"/>
     </resultMap>
 
     <insert id="insert" parameterType="ArticleSort" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
@@ -17,9 +16,6 @@
             <if test="artcleId!=null">
                 article_id,
             </if>
-            <if test="effective!=null">
-                is_effective,
-            </if>
         </trim>
         VALUE
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -29,12 +25,22 @@
             <if test="artcleId!=null">
                 #{artcleId,jdbcType=BIGINT},
             </if>
-            <if test="effective!=null">
-                #{effective,jdbcType=BIT},
-            </if>
+
         </trim>
     </insert>
-    <select id="selectOne" parameterType="Long" resultMap="ArticleSortMap">
+
+    <select id="selectBySortId" parameterType="Long" resultMap="ArticleSortMap">
+            select * from  tbl_article_sort WHERE  sort_id= #{sortId};
+    </select>
+
+    <select id="selectByArticleId" parameterType="Long" resultMap="ArticleSortMap">
             select * from  tbl_article_sort WHERE article_id = #{id}
     </select>
+    <delete id="delete" parameterType="Long">
+        DELETE from tbl_article_sort where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="ArticleSort">
+        update tbl_article_sort set sort_id=#{sortId} where article_id=#{artcleId};
+    </update>
 </mapper>

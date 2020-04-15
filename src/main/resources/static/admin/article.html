@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>Article management </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+    <script src="../js/admin/index.js"></script>
+    <script src="../js/admin/public.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+
+    <!--sweetalert2-->
+    <link href="https://cdn.bootcss.com/limonte-sweetalert2/7.33.0/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/limonte-sweetalert2/7.33.0/sweetalert2.all.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+    <!-- Latest compiled and minified Locales -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+
+    <style type="text/css">
+        .navbar-brand {
+            padding-top: 9px;
+        }
+
+        .out-user {
+            padding-top: 9px;
+            padding-right: 20px;
+        }
+
+        #text-network {
+            white-space: nowrap;
+            width: 17em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .img-responsive {
+            width: 100px;
+        }
+
+        .info-tbl {
+            padding-top: 35px;
+        }
+
+        .set-pws {
+            padding-top: 35px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!-- 导航条 start -->
+<nav class="navbar navbar-default  navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="../img/github.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <p class="navbar-text " id="text-network">这里是放骚话的 虽然骚话多但是可省略</p>
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/index.html">后台中心 <span class="sr-only">(current)</span></a></li>
+                <li><a href="/admin/edit.html">撰写 </a></li>
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">管理 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">文章管理</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/admin/class.html">分类管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-right out-user">
+                <button type="button" class="navbar-right btn btn-default " id="quit">登出</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- 导航条 end -->
+<!-- 内容中心 start -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="nav nav-sidebar">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="../img/picture.jpg" alt="谁还不是只小猫呢"
+                             class="img-circle img-responsive center-block">
+                        <div class="center-block text-center info-tbl">
+                            <div>用户名：<span id="user"></span></div>
+                            <p>最近登录：<span id="lastTime"></span></p>
+                            <button type="button" class="btn btn-default btn-info">设置资料</button>
+                            <button type="button" class="btn btn-default btn-success btn-setpassword">修改密码</button>
+                        </div>
+                        <div class=" set-pws" hidden="hidden">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" placeholder="输入要修改的密码">
+                                </div>
+                                <button type="button" id="setPsw" class="btn btn-default btn-sm btn-warning">修改</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="row">
+            <table class="table table-hover" id="article-table">
+                <!-- Single button -->
+                <div class="btn-group" style="margin-bottom:5px;">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       选中项<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li id="remove"><a >删除</a></li>
+                    </ul>
+                </div>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- 内容中心 end -->
+<script src="/js/admin/article.js"></script>
+<script src="/js/admin/public.js"></script>
+</body>
+</html>

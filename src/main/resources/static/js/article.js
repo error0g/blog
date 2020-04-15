@@ -20,12 +20,12 @@ window.onload = function () {
         type: "get",
         url: "/article/" + articleId,
         dataType: "json",
-        success: function (json) {
-            $("#articleTitle").html(json.title);
-            $("#articleCreateBy").html(json.createDate);
-            $("#articleContent").text(json.content);
-            $("#articleKind").html(json.kindName)
-            $("#articlTraffic").html(json.traffic);
+        success: function (result) {
+            $("#articleTitle").html(result.data.title);
+            $("#articleCreateBy").html(result.data.createDate);
+            $("#articleContent").text(result.data.content);
+            $("#articleKind").html(result.data.kindName)
+            $("#articlTraffic").html(result.data.traffic);
             MarkDown();
         }
     });

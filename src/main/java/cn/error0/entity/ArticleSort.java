@@ -7,5 +7,4 @@ public class ArticleSort {
     private Long id;
     private Long sortId;
     private Long artcleId;
-    private Boolean effective;
 }

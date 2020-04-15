@@ -49,4 +49,12 @@
     <select id="selectAll"  resultMap="ArticleContentMap">
            SELECT * from tbl_article_content ORDER BY create_by DESC
     </select>
+
+    <delete id="delete" parameterType="Long">
+        DELETE from tbl_article_content where article_id=#{id}
+    </delete>
+
+    <update id="update" parameterType="ArticleContent">
+        update tbl_article_content set content=#{content} where article_id=#{artcleId};
+    </update>
 </mapper>

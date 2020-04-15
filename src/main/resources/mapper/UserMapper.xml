@@ -6,6 +6,6 @@
     select * from user_admin where username=#{username};
 </select>
     <update id="updateUser" parameterType="User">
-        update user_admin set username = #{username},password = #{password} where username = #{username};
+        update user_admin set username = #{username},password = #{password},last_time=#{lastTime} where username = #{username};
     </update>
 </mapper>

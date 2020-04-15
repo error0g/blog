@@ -7,5 +7,6 @@ import cn.error0.entity.User;
 public interface UserService {
 
     User getByName(String name);
-    void updatePsw(User user);
+
+    void updateUser(User user);
 }
